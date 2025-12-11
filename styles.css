@@ -22,9 +22,13 @@ html, body {
 body {
   margin: 0;
   font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-  background: var(--offwhite);
   color: var(--navy);
   line-height: 1.55;
+
+  /* ✨ Animated Gradient Background */
+  background: linear-gradient(120deg, var(--sky), var(--mint), var(--teal), var(--offwhite));
+  background-size: 300% 300%;
+  animation: gradientShift 12s ease infinite;
 }
 
 
@@ -273,4 +277,18 @@ footer {
 
 .small {
   font-size: 12px;
+}
+
+
+/* ===================== ANIMATED GRADIENT ====================== */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
