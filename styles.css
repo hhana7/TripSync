@@ -1,17 +1,18 @@
 :root {
-  /* === Color Palette (Blues + Greens + Off-White) === */
-  --offwhite: #f4f7f8;       /* soft off-white background */
-  --navy: #0a2a43;           /* dark blue for text */
-  --teal: #2a9d8f;           /* soft green-teal accent */
-  --sky: #cfe9f3;            /* very light blue surface */
-  --border: #0a2a4315;       /* subtle border */
-  --card-bg: #ffffff;        /* card background */
-  
-  /* === Layout Tokens === */
+  /* === Vibrant Blue + Green Color Palette === */
+  --offwhite: #f2f7fa;          /* clean off-white background */
+  --navy: #063970;              /* deep vibrant navy-blue */
+  --teal: #19c2a0;              /* bright teal accent */
+  --mint: #e3fff7;              /* soft mint surface */
+  --sky: #b9e8ff;               /* bright light blue for hovers */
+  --border: #06397022;          /* subtle border */
+  --card-bg: #ffffff;           /* cards remain white */
+
+  /* Layout tokens */
   --radius: 18px;
   --space: 20px;
-  --shadow: 0 8px 24px rgba(0,0,0,.07);
-  --focus: 0 0 0 3px rgba(42,157,143,0.4); /* teal focus ring */
+  --shadow: 0 8px 24px rgba(0,0,0,.08);
+  --focus: 0 0 0 3px rgba(25,194,160,0.5);
 }
 
 html, body {
@@ -27,18 +28,20 @@ body {
 }
 
 
+/* Layout Wrapper */
 .wrap {
   max-width: 1100px;
   margin: auto;
   padding: clamp(16px, 3vw, 32px);
 }
 
-/* Header ------------------------------------------------ */
+
+/* ===================== HEADER ====================== */
 header.site {
   position: sticky;
   top: 0;
   z-index: 50;
-  background: linear-gradient(180deg, rgba(244,247,248,0.96), rgba(244,247,248,0.92));
+  background: linear-gradient(180deg, rgba(242,247,250,0.97), rgba(242,247,250,0.9));
   backdrop-filter: blur(6px);
   border-bottom: 1px solid var(--border);
 }
@@ -56,27 +59,30 @@ header.site {
   font-size: clamp(22px, 3vw, 32px);
   font-weight: 800;
   color: var(--teal);
-  letter-spacing: 0.3px;
+  letter-spacing: 0.4px;
 }
 
-/* Navigation */
+
+/* -------------------- NAVIGATION -------------------- */
 nav a {
   color: var(--navy);
   text-decoration: none;
-  padding: 8px 12px;
+  padding: 8px 14px;
   border-radius: 10px;
-  font-weight: 500;
+  font-weight: 600;
   transition: 0.25s ease;
 }
 
 nav a:hover,
 nav a:focus {
   background: var(--sky);
-  color: var(--teal);
+  color: var(--navy);
   outline: none;
+  box-shadow: 0 0 0 2px var(--sky);
 }
 
-/* Sections ------------------------------------------------ */
+
+/* ===================== SECTIONS ====================== */
 section {
   scroll-margin-top: 90px;
 }
@@ -87,11 +93,12 @@ section {
   border-radius: var(--radius);
   padding: clamp(16px, 2.5vw, 28px);
   box-shadow: var(--shadow);
-  transition: 0.2s ease;
+  transition: 0.25s ease;
 }
 
 .section:hover {
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(0,0,0,.10);
 }
 
 .section + .section {
@@ -101,10 +108,13 @@ section {
 .section h2 {
   margin: 0 0 10px;
   font-size: clamp(20px, 2.2vw, 28px);
-  color: var(--teal);
+  color: var(--navy);
+  border-left: 6px solid var(--teal);
+  padding-left: 10px;
 }
 
-/* Meta Grid --------------------------------------------- */
+
+/* ===================== META GRID ====================== */
 .meta-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -118,13 +128,15 @@ section {
 }
 
 .meta-item {
-  background: var(--sky);
+  background: var(--mint);
   border: 1px solid var(--border);
   border-radius: 12px;
   padding: 12px 14px;
+  color: var(--navy);
 }
 
-/* Team Grid --------------------------------------------- */
+
+/* ===================== TEAM GRID ====================== */
 .team-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -133,19 +145,24 @@ section {
 }
 
 .person {
-  background: var(--sky);
+  background: var(--mint);
   border: 1px solid var(--border);
   border-radius: 16px;
   padding: 16px;
   display: flex;
   gap: 12px;
   align-items: center;
+  transition: 0.2s ease;
+}
+
+.person:hover {
+  background: var(--sky);
 }
 
 .avatar {
   width: 56px;
   height: 56px;
-  border-radius: 12px;
+  border-radius: 14px;
   background: var(--teal);
   color: white;
   display: grid;
@@ -155,11 +172,12 @@ section {
 }
 
 .role {
-  color: #365b76;
+  color: #1d4f72;
   font-size: 14px;
 }
 
-/* Activity Cards ---------------------------------------- */
+
+/* ===================== ACTIVITY CARDS ====================== */
 .activities {
   display: grid;
   grid-template-columns: 1fr;
@@ -178,6 +196,12 @@ section {
   border-radius: 16px;
   padding: 18px;
   box-shadow: var(--shadow);
+  transition: 0.25s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(0,0,0,.12);
 }
 
 .card h3 {
@@ -187,10 +211,11 @@ section {
 }
 
 .desc {
-  color: #2c3f52;
+  color: var(--navy);
 }
 
-/* PDF + Video Embeds ------------------------------------ */
+
+/* ===================== EMBEDS ====================== */
 .embed iframe,
 .video-frame video {
   width: 100%;
@@ -212,6 +237,7 @@ section {
 }
 
 
+/* ===================== DOC LINKS ====================== */
 .doc-link {
   margin-top: 10px;
   font-size: 15px;
@@ -221,20 +247,28 @@ section {
   display: inline-block;
   min-width: 180px;
   color: var(--navy);
-  opacity: 0.7;
+  opacity: 0.75;
+  font-weight: 600;
 }
 
 .doc-link a {
   color: var(--teal);
-  font-weight: 600;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.doc-link a:hover {
+  text-decoration: underline;
 }
 
 
+/* ===================== FOOTER ====================== */
 footer {
   text-align: center;
   padding: 20px;
   margin-top: 40px;
-  color: #557a95;
+  color: var(--navy);
+  opacity: 0.7;
 }
 
 .small {
